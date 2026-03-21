@@ -1,20 +1,34 @@
+:root {
+    /* colors */
+    --primary-color: darkblue;
+    --secondary-bg: #eee;
+    --text-color: #333;
+    --white: white;
+    --border-color: rgba(0, 0, 0, 0.2);
+
+    /* spacing and shadows */
+    --padding-standard: 10px;
+    --shadow-color: gray;
+    --main-width: 840px;
+}
+
 main {
-    max-width: 840px;
+    max-width: var(--main-width);
 }
 
 nav {
-    background-color: darkblue;
-    padding: 10px;
+    background-color: var(--primary-color);
+    padding: var(--padding-standard);
 }
 
 nav a {
-    color: white;
+    color: var(--white);
     display: block;
     padding: 20px;
 }
 
 h1 {
-    color: darkblue;
+    color: var(--primary-color);
 }
 
 p {
@@ -24,10 +38,10 @@ p {
 aside {
     width: 20rem;
     margin: 1rem;
-    border: 1px solid rgb(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
     padding: 1rem;
-    background-color: #eee;
-    color: #333;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -41,7 +55,7 @@ main img {
     height: auto;
     border: 1px solid black;
     padding: 2px;
-    box-shadow: 0 0 30px gray;
+    box-shadow: 0 0 30px var(--shadow-color);
 }
 
 footer {
