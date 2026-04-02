@@ -3,6 +3,7 @@
     --accent1-color: #264653;
     --accent2-color: #e9c46a;
     --background-color1: rgba(38, 70, 83, 0.8);
+    --border-color: rgba(0, 0, 0, 0.1);
     --heading-font: "Times New Roman", "Georgia", serif;
     --body-font: Arial, Helvetica, sans-serif;
 }
@@ -18,10 +19,86 @@ body {
     color: var(--accent1-color);
 }
 
-header,
-footer {
-    width: 840px;
+header {
+    background-color: #ffffff;
+    max-width: 840px;
     margin: 0 auto;
+    /*aplicação do grid*/
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    /*150px para a logo, o resto para o nav*/
+    align-items: center;
+    /*alinha os dois verticalmente ao centro*/
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    /*uma linha sutil para separar do conteudo*/
+
+}
+
+.logo {
+    width: 100px;
+    /*tamanho fixo para a logo*/
+    height: auto;
+    justify-self: start;
+    /*garante que a logo fique a esquerda*/
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    /*efeito sutil ao passar o mouse*/
+}
+
+header nav {
+    justify-self: end;
+    /*empurra o menu para a direita */
+    margin: 0;
+    /* remove a margem de 16px definida para todos os navs*/
+}
+
+header nav ul {
+    /*deixa os links do menu em linha*/
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /*ajuste garante que os itens se distribuam bem*/
+    gap: 20px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--accent1-color);
+    font-weight: 600;
+    font-family: var(--body-font);
+    font-size: 1.1rem;
+    /*ajuste: aumenta a area de clique, melhor para o usuario*/
+    padding: 5px 10px;
+    /*ajuste: cria uma transição suave para as cores*/
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+footer {
+    max-width: 840px;
+    margin: 40px auto 0;
+    /* Margem superior para afastar do conteúdo */
+    padding: 20px;
+    background-color: var(--accent1-color);
+    /* Cor de fundo escura conforme o root */
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    /* Texto na esquerda, Nav na direita */
+    align-items: center;
+    /* Alinha verticalmente no centro */
+    border-radius: 8px 8px 0 0;
+    /* Arredonda apenas as pontas de cima */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
 }
 
 main {
@@ -48,16 +125,28 @@ article {
 }
 
 .socialmedia img {
-    width: 30px;
+    width: 25px;
+    /* Tamanho dos ícones conforme o wireframe */
     height: auto;
-    margin: 5px 10px;
+    transition: transform 0.3s ease;
+    /* Se os ícones forem pretos e o fundo for escuro, você pode usar:
+       filter: invert(1); para deixá-los brancos */
 }
 
 .socialmedia {
-    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    display: flex;
+    gap: 15px;
+    /* Espaço entre os ícones */
+    margin: 0;
+    /* Remove margens extras */
+    padding: 0;
+}
+
+.socialmedia img:hover {
+    transform: translateY(-3px);
+    /* Pequeno pulo ao passar o mouse */
 }
 
 .hero {
@@ -109,4 +198,62 @@ h2 {
     padding: 8px;
     text-align: center;
     margin: 20px 0;
+}
+
+.history-grid {
+    display: grid;
+    /*cria 3 colunas: texto imagem texto*/
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+    max-width: 840px;
+    margin: 20px auto;
+}
+
+.history-grid h2 {
+    /* Faz o título ocupar as 3 colunas (da linha 1 até a 4) */
+    grid-column: 1/4;
+    text-align: center;
+}
+
+.history-grid img {
+    width: 200px;
+    /* Ajuste conforme o tamanho da sua imagem lateral */
+    height: auto;
+    justify-self: center;
+}
+
+.adventure-container {
+    max-width: 840px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.adventure-grid {
+    display: grid;
+    /* Cria 5 colunas de tamanhos iguais */
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.adventure-grid figure {
+    margin: 0;
+    padding: 0;
+}
+
+.adventure-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    /* Opcional: adiciona uma sombra leve para destacar as fotos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.adventure-grid figcaption {
+    margin-top: 10px;
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+    color: var(--accent1-color);
+    font-weight: bold;
 }
