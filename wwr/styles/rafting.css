@@ -500,6 +500,35 @@ button[type="submit"] {
         padding: 10px;
         font-size: 1.2rem;
     }
+
+    .contact-info {
+        width: 95%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .contact-info h2 {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+
+    .contact-info p {
+        font-size: 0, 9rem;
+    }
+
+    .contact-main-grid {
+        padding: 0 10px;
+        gap: 20px;
+    }
+
+    .contact-form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .form-item {
+        grid-template-columns: 1fr;
+    }
 }
 
 .grid-container {
