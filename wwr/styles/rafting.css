@@ -1,7 +1,7 @@
 :root {
     --primary-color: #055a05;
     --accent1-color: #264653;
-    --accent2-color: #e9c46a;
+    --accent2-color: #f8f872;
     --background-color1: rgba(38, 70, 83, 0.8);
     --border-color: rgba(0, 0, 0, 0.1);
     --heading-font: "Times New Roman", "Georgia", serif;
@@ -20,8 +20,8 @@ body {
 }
 
 header {
-    background-color: #ffffff;
-    max-width: 840px;
+    background-color: var(--accent2-color);
+    max-width: 100%;
     margin: 0 auto;
     /*aplicação do grid*/
     display: grid;
@@ -29,14 +29,14 @@ header {
     /*150px para a logo, o resto para o nav*/
     align-items: center;
     /*alinha os dois verticalmente ao centro*/
-    padding: 10px 20px;
+    padding: 20px 40px;
     border-bottom: 1px solid var(--border-color);
     /*uma linha sutil para separar do conteudo*/
 
 }
 
 .logo {
-    width: 100px;
+    width: 150px;
     /*tamanho fixo para a logo*/
     height: auto;
     justify-self: start;
@@ -80,7 +80,7 @@ header nav a {
 }
 
 footer {
-    max-width: 840px;
+    max-width: 100%;
     margin: 40px auto 0;
     /* Margem superior para afastar do conteúdo */
     padding: 20px;
@@ -88,11 +88,11 @@ footer {
     /* Cor de fundo escura conforme o root */
     color: #ffffff;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* Texto na esquerda, Nav na direita */
     align-items: center;
     /* Alinha verticalmente no centro */
-    border-radius: 8px 8px 0 0;
+    /* border-radius: 8px 8px 0 0; */
     /* Arredonda apenas as pontas de cima */
 }
 
@@ -149,44 +149,32 @@ main article {
 
 .hero {
     position: relative;
+    display: block;
     width: 100%;
+}
+
+.hero-msg {
+    position: absolute;
+    top: 50%;
+    /*centraliza verticalmente*/
+    left: 50%;
+    /*centraliza horizontalmente*/
+    transform: translate(-50%, -50%);
+    /*ajuste preciso do centro*/
+    background-color: var(--background-color1);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    width: 80%;
+    /*garante que não fique colado nas bordas*/
+    max-width: 500px;
+    border-radius: 8px;
 }
 
 .hero img {
     display: block;
     width: 100%;
     height: auto;
-}
-
-.hero h1 {
-    position: absolute;
-    top: 30px;
-    left: 0;
-    width: 100%;
-    padding: 1rem;
-    text-align: center;
-    background-color: var(--background-color1);
-    color: #fff;
-    margin: 0;
-}
-
-.hero article {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 450px;
-    background-color: var(--background-color1);
-    color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 0;
-}
-
-.hero article img {
-    float: right;
-    width: 125px;
-    margin-left: 15px;
-    border: 2px solid var(--accent2-color);
 }
 
 h2 {
@@ -205,7 +193,7 @@ h2 {
     grid-template-columns: 1fr auto 1fr;
     gap: 20px;
     align-items: center;
-    max-width: 840px;
+    max-width: 100%;
     margin: 20px auto;
 }
 
@@ -223,7 +211,7 @@ h2 {
 }
 
 .adventure-container {
-    max-width: 840px;
+    max-width: 100%;
     margin: 40px auto;
     text-align: center;
 }
@@ -426,18 +414,246 @@ button[type="submit"] {
 
     /* Faz o mapa e o formulário ficarem um embaixo do outro no celular */
     .contact-main-grid,
-    .employee-grid {
+    .employee-grid,
+    .trip-card,
+    .trip {
         grid-template-columns: 1fr;
     }
 
     /* Ajusta o cabeçalho para telas pequenas */
     header {
-        grid-template-columns: 1fr;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        /*empilha logo e menu*/
+        padding: 10px;
     }
 
     header nav {
         justify-self: center;
         margin-top: 10px;
     }
+
+    header nav ul {
+        flex-direction: row;
+        /*mantém links lado a lado*/
+        flex-wrap: wrap;
+        /*permite que os links pulem linha se faltar espaço*/
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 120px;
+        /*reduz a logo no celular para ganhar espaço*/
+        margin-bottom: 10px;
+    }
+
+    .trip-card img,
+    .trip img {
+        height: 250px;
+    }
+
+    .hero-msg {
+        position: static;
+        /*remove o texto de cima da imagem*/
+        transform: none;
+        width: 100%;
+        max-width: none;
+        background-color: var(--accent1-color);
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .hero-msg h1 {
+        font-size: 1.5rem;
+        /*diminui o título no celular*/
+    }
+
+    .history-grid {
+        grid-template-columns: 1fr;
+        /*força uma coluna*/
+        text-align: center;
+    }
+
+    .history-grid h2 {
+        grid-column: 1;
+        /*ajusta o título para a nova coluna*/
+    }
+
+    .history-grid img {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    /*remove as margens laterais que estão espremendo o texto*/
+    main p,
+    main section,
+    main article {
+        margin: 10px;
+        padding: 5px;
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /*duas colunas solicitadas*/
+    gap: 20px;
+}
+
+.grid-item img {
+    width: 100%;
+    /*preenche a largura da coluna*/
+    height: 300px;
+    /*altura fixa para alinhar os cards*/
+    object-fit: cover;
+    /*corta as bordas sem esticar a imagem*/
+    border-radius: 8px 8px 0 0;
+    /*arredonda só em cima*/
+}
+
+.newsletter {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.newsletter form {
+    display: flex;
+    flex-direction: column;
+    /*coloca nome, email e botão em fila vertical*/
+    gap: 15px;
+    margin: 0 auto;
+    /*centraliza o formulario no meio da seção*/
+    max-width: 400px;
+    /*evita que o formulario fique largo demais*/
+}
+
+.newsletter input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.newsletter-btn {
+    background-color: var(--accent1-color);
+    color: #ffffff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    /*maozinha do mouse*/
+    transition: 0.3s;
+}
+
+.newsletter-btn:hover {
+    background-color: var(--accent2-color);
+    color: var(--accent1-color);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent2-color);
+    color: var(--accent1-color);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.cta-button:hover {
+    background-color: #f9f9f9;
+}
+
+/*container das viagens*/
+.trip-descriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 40px auto;
+}
+
+/*estilo individual de cada viagem*/
+.trip-card,
+.trip {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    /*foto na esquerda, texto na direita*/
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trip-card img,
+.trip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*mantém a qualidade da foto sem esticar*/
+}
+
+.trip-content {
+    padding: 20px;
+}
+
+.trip-content h3 {
+    color: var(--accent1-color);
+    margin-bottom: 10px;
+}
+
+.trips-table-container {
+    margin: 50px auto;
+    overflow-x: auto;
+    /*garante que a tabela não quebre no celular*/
+}
+
+.trips-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: var(--body-font);
+}
+
+.trips-table th {
+    background-color: var(--accent1-color);
+    color: #ffffff;
+    padding: 15px;
+    text-align: left;
+}
+
+.trips-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/*efeito zebra nas linhas para facilitar a leitura*/
+.trips-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.trips-table tr:hover {
+    background-color: #e9f5f9;
+}
+
+.tips-cta {
+    background-color: var(--accent1-color);
+    color: #ffffff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.tips-cta h2 {
+    background-color: transparent;
+    /*remove o fundo padrão de h2 se houver*/
+    margin-top: 0;
 }
